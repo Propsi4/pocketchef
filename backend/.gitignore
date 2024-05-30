@@ -3,3 +3,4 @@ model_training/datasets
 model_training/runs
 inference
 *.pt
+!best.pt
