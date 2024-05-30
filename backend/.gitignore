@@ -1,0 +1,5 @@
+# Own gitignore files
+model_training/datasets
+model_training/runs
+inference
+*.pt

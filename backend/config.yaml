@@ -1,0 +1,22 @@
+CHECKPOINT_PATH: "best.pt"
+
+NAMES:
+  - 'potato'
+  - 'tomato'
+  - 'beef'
+  - 'pork'
+  - 'chicken'
+  - 'zucchini'
+  - 'yellow_onion'
+  - 'radish'
+  - 'eggplant'
+  - 'green_onion'
+  - 'red_cabbage'
+  - 'carrot'
+  - 'egg'
+
+SAVE_INFERENCE_PATH: "inference"
+VERBOSE: True
+SAVE_INFERENCE: True
+BING_API_KEY: 
+

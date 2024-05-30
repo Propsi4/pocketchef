@@ -1,0 +1,23 @@
+names:
+- '0'
+- '1'
+- '10'
+- '11'
+- '12'
+- '2'
+- '3'
+- '4'
+- '5'
+- '6'
+- '7'
+- '8'
+- '9'
+nc: 13
+roboflow:
+  license: CC BY 4.0
+  project: food-ingredients-pnisb
+  url: https://universe.roboflow.com/seongmin/food-ingredients-pnisb/dataset/1
+  version: 1
+  workspace: seongmin
+train: food-ingredients-pnisb/train/images
+val: food-ingredients-pnisb/validation/images
