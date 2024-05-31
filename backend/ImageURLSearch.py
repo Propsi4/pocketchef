@@ -30,8 +30,9 @@ class ImageURLSearch:
             return_first (bool): Whether to return the first valid URL or all valid URLs
 
         Returns:
-            list: A list of valid URLs
-            '''
+            return_first == True: list: A list of valid URLs
+            return_first == False: str: The first valid URL
+        '''
         valid_urls = []
         for url in urls:
             try:
