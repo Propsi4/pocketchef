@@ -1,0 +1,59 @@
+.app {
+  text-align: center;
+  background-color: #ffd5af;
+  height: 100vh;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-decoration: none;
+}
+
+/* === Custom scrollbar === */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #e4e4e4;
+  border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #e59a59;
+  border-radius: 100px;
+}
+
+.gridBox {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  height: 90vh;
+}
+
+.title {
+  padding: 5px 0px;
+  border-radius: 10px;
+  background-color: #3f3e3e21;
+  width: 100%;
+  font-size: 3rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  text-decoration: none;
+  color: rgb(253, 253, 253);
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3), 0 5px 5px rgba(0, 0, 0, 0.22);
+}
+
+.smaller {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.items-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 10px;
+  height: 15vh;
+  overflow: auto;
+}

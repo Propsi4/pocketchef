@@ -4,3 +4,4 @@ model_training/runs
 inference
 *.pt
 !best.pt
+flashcard.png

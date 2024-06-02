@@ -16,7 +16,5 @@ NAMES:
   - 'egg'
 
 SAVE_INFERENCE_PATH: "inference"
-VERBOSE: True
-SAVE_INFERENCE: True
-BING_API_KEY: 
-
+VERBOSE: False
+SAVE_INFERENCE: False

@@ -1,0 +1,48 @@
+.dishImageContainer {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3), 0 5px 5px rgba(0, 0, 0, 0.22);
+}
+
+.dishImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dishListItem {
+  display: flex;
+  width: 80%;
+  height: fit-content;
+  cursor: pointer;
+  align-items: center;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 10px;
+  background-color: #e59a5959;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3), 0 5px 5px rgba(0, 0, 0, 0.22);
+}
+
+.dishAbout {
+  color: rgb(75, 71, 71);
+  display: grid;
+  grid-template-rows: 1fr 3fr;
+  margin-left: 10px;
+  width: 80%;
+}
+
+.dishName {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 10px 0;
+  display: block;
+  top: 0px;
+}
+
+.dishInfoLabel {
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin: 5px 0;
+}

@@ -1,4 +1,6 @@
 import yaml
+from dotenv import load_dotenv
+import os
 
 
 def load_config():
@@ -7,9 +9,11 @@ def load_config():
     return config
 
 
+load_dotenv()
 config = load_config()
 CHECKPOINT_PATH = config['CHECKPOINT_PATH']
 CLASSES = config['NAMES']
 SAVE_INFERENCE_PATH = config['SAVE_INFERENCE_PATH']
 VERBOSE = config['VERBOSE']
 SAVE_INFERENCE = config['SAVE_INFERENCE']
+CHATGPT_TOKEN = os.environ['CHATGPT_TOKEN']

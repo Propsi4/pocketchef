@@ -1,4 +1,7 @@
 from ultralytics import YOLO
+import io
+from fastapi import UploadFile
+from PIL import Image, UnidentifiedImageError
 from load_config import (CHECKPOINT_PATH, CLASSES,
                          SAVE_INFERENCE_PATH, VERBOSE,
                          SAVE_INFERENCE)
@@ -23,7 +26,23 @@ class Model:
         self.save_image = save_image
         self.model = YOLO(checkpoint_path)
 
-    def predict(self, image_path):
+    def load_image(self, image: Image) -> Image:
+        '''
+        Load the image
+
+        Args:
+            image (UploadFile): The image to load
+
+        Returns:
+            Image: The loaded image
+        '''
+        try:
+            image_data = image.file.read()
+            return Image.open(io.BytesIO(image_data)).convert('RGB')
+        except UnidentifiedImageError:
+            return None
+
+    def predict(self, image_path: UploadFile) -> list:
         '''
         Predict the class of an image
 
@@ -31,9 +50,12 @@ class Model:
             image_path (str): The path to the image
 
         Returns:
-            dict: A dictionary containing the class names and the amount of each class in the image
+            list: The list of classes in the image
         '''
-        prediction = self.model(image_path,
+        image = self.load_image(image_path)
+        if image is None:
+            return []
+        prediction = self.model(image,
                                 verbose=self.verbose,
                                 save=self.save_image,
                                 project=SAVE_INFERENCE_PATH,
@@ -41,6 +63,7 @@ class Model:
 
         class_ids = prediction[0].boxes.cls.data.cpu()
         class_names = [CLASSES[int(i)] for i in class_ids]
-        class_amount = {class_name: class_names.count(class_name) for class_name in class_names}
+        # class_amount = {class_name: class_names.count(class_name) for class_name in class_names}
+        available_classes = list(set(class_names))
 
-        return class_amount
+        return available_classes
