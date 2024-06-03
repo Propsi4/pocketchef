@@ -7,13 +7,13 @@ from typing import List, Dict, Optional
 from ImageURLSearch import ImageURLSearch
 from FlashCardGenerator import FlashCardGenerator
 from ChatGPTAPI import ChatGPTAPI
-from load_config import CHATGPT_TOKEN, CLASSES
+from load_config import CHATGPT_TOKEN, MANUAL_CHATTING, CLASSES
 from fastapi.middleware.cors import CORSMiddleware
 
 
 app = FastAPI()
 model = Model()
-chatgpt = ChatGPTAPI(CHATGPT_TOKEN)
+chatgpt = ChatGPTAPI(CHATGPT_TOKEN, manual_chatting=MANUAL_CHATTING)
 cards_generator = FlashCardGenerator()
 
 app.add_middleware(

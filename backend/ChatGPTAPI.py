@@ -53,6 +53,7 @@ class ChatGPTAPI():
     Attributes:
         _sesion_token (str): The session token for the ChatGPT API
         model (ChatGPT): The ChatGPT model
+        manual_chatting (bool): Whether the user is manually chatting
         _conversation_id (str): The conversation ID
         _proxy (str): The proxy
         image_search (ImageURLSearch): The ImageURLSearch object
@@ -66,9 +67,10 @@ class ChatGPTAPI():
         toggle_chat_history(temporary_chat): Toggle the chat history
         get_user_data(): Get the user data from the ChatGPT API
     '''
-    def __init__(self, sesion_token, conversation_id="", proxy=None):
+    def __init__(self, sesion_token, conversation_id="", proxy=None, manual_chatting=False):
         self._sesion_token = sesion_token
         self.model = None
+        self.manual_chatting = manual_chatting
         self._conversation_id = conversation_id
         self._proxy = proxy
         self.image_search = ImageURLSearch()
@@ -107,9 +109,22 @@ class ChatGPTAPI():
             warnings.warn("No ingredients provided", UserWarning)
             return None
 
+        if self.manual_chatting:
+            if not self._instructions_mentioned:
+                print(f'\n{INSTRUCTIONS_TEMPLATE}\n')
+                self._instructions_mentioned = True
+            print("Ingredients:", ingredients, end="\n\n")
+            response = input("Response: ")
+            json_response = self.parse_json(response)
+            dishes = json_response.get("dishes")
+            if dishes:
+                for dish in dishes:
+                    dish_name = dish.get("dish_name")
+                    dish.update({"image_url": self.image_search.get_valid_image_url(dish_name)})
+            return json_response
+
         if not self.model:
             self.model = ChatGPT(self._sesion_token, conversation_id=self._conversation_id, proxy=self._proxy)
-            sleep(1)
 
         if not self._instructions_mentioned:
             api_response = self.model.send_message(INSTRUCTIONS_TEMPLATE)
